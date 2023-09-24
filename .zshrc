@@ -1,7 +1,7 @@
 ZSH="$HOME/.oh-my-zsh/"
 export ZSH="$HOME/.oh-my-zsh/"
 ZSH_THEME="keyitdev"
-plugins=(git)
+plugins=( kubectl zsh-syntax-highlighting zsh-autosuggestions )
 
 ZSH_CACHE_DIR="$HOME/.cache/oh-my-zsh"
 if [[ ! -d "$ZSH_CACHE_DIR" ]]; then
@@ -51,3 +51,15 @@ alias ........="cd ../../../.."
 # dotfiles config
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 dotfiles config --local status.showUntrackedFiles no
+
+# k8s
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+alias kctx="kubectl ctx"
+alias kns="kubectl ns"
+source <(kubectl completion zsh)
+
+# starship
+eval "$(starship init zsh)"
+
+alias k=kubectl
+complete -F __start_kubectl k

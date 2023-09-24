@@ -1,0 +1,19 @@
+format = '''
+$all
+'''
+
+continuation_prompt = '▶▶ '
+
+[character]
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
+
+[kubernetes]
+disabled = false
+#format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
+[time]
+disabled = true
+format = '🕙[\[ $time \]]($style) '
+
+[line_break]
+disabled = true

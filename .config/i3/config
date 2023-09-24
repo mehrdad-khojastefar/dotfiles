@@ -10,6 +10,11 @@ font pango:Open sans 11
 
 ### Runnig apps in background ###
 
+
+# keyboard layout
+exec_always setxkbmap -layout us,ir
+exec_always setxkbmap -option 'grp:win_space_toggle'
+
 # run picom
 exec_always --no-startup-id picom &
 
@@ -119,9 +124,15 @@ bindsym $mod+z exec "rofi -show  -modi ':rofi-bookmarks' -no-default-confi
 bindsym $mod+x exec "rofi-powermenu"
 bindsym $mod+c exec "rofi-screenshot"
 
-# take a screenshot
-bindsym Pause exec screenshot -sa
-bindsym Print exec screenshot -sf
+## Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # brightness control
 exec_always --no-startup-id light -I
@@ -293,6 +304,3 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# keyboard layout
-exec_always setxkbmap -layout us,ir
-exec_always setxkbmap -option 'grp:win_space_toggle'
