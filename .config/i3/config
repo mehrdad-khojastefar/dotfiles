@@ -15,6 +15,8 @@ font pango:Open sans 11
 exec_always setxkbmap -layout us,ir
 exec_always setxkbmap -option 'grp:win_space_toggle'
 
+exec --no-startup-id xmodmap ~/.Xmodmap
+
 # run picom
 exec_always --no-startup-id picom &
 
@@ -135,9 +137,9 @@ bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewi
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # brightness control
-exec_always --no-startup-id light -I
-bindsym XF86MonBrightnessUp exec light -A 2 && light -O && brightness &
-bindsym XF86MonBrightnessDown exec light -U 2 && light -O && brightness &
+#exec_always --no-startup-id light -I
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% 
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 # brightness control hdmi
 bindsym Ctrl+F7 exec brightness_hdmi down
@@ -147,7 +149,7 @@ bindsym Ctrl+F8 exec brightness_hdmi up
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && volume &
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && volume &
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute &
-#bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Master 5%+ && volume &
+bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Master 5%+ && volume &
 
 # turn off screen
 bindsym XF86ScreenSaver exec xset dpms force off
@@ -304,3 +306,6 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+# touchpad on and off controller on laptop with Fn+<touchpad control functional key>
+bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
+bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
