@@ -12,8 +12,8 @@ font pango:Open sans 11
 
 
 # keyboard layout
-exec_always setxkbmap -layout us,ir
-exec_always setxkbmap -option 'grp:win_space_toggle'
+exec setxkbmap -layout us,ir
+exec setxkbmap -option 'grp:win_space_toggle'
 
 exec --no-startup-id xmodmap ~/.Xmodmap
 
