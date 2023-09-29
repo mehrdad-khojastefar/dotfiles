@@ -16,4 +16,4 @@ disabled = true
 format = '🕙[\[ $time \]]($style) '
 
 [line_break]
-disabled = true
+disabled = false

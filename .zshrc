@@ -63,3 +63,11 @@ eval "$(starship init zsh)"
 
 alias k=kubectl
 complete -F __start_kubectl k
+export KUBE_EDITOR=nvim
+
+# backspace delete word 
+bindkey '^H' backward-kill-word
+
+# language 
+setxkbmap -option 'grp:win_space_toggle'
+setxkbmap -layout us,ir
