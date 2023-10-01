@@ -1,4 +1,0 @@
-keycode 114 = XF86AudioLowerVolume
-keycode 115 = XF86AudioRaiseVolume
-keycode 190 = XF86AudioMicMute
-keycode 202 = XF86Launch3

@@ -10,7 +10,6 @@ font pango:Open sans 11
 
 ### Runnig apps in background ###
 
-
 # keyboard layout
 exec setxkbmap -layout us,ir
 exec setxkbmap -option 'grp:win_space_toggle'

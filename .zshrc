@@ -69,5 +69,5 @@ export KUBE_EDITOR=nvim
 bindkey '^H' backward-kill-word
 
 # language 
-setxkbmap -option 'grp:win_space_toggle'
-setxkbmap -layout us,ir
+# setxkbmap -option 'grp:win_space_toggle'
+# setxkbmap -layout us,ir
