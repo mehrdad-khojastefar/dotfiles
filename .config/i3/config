@@ -26,7 +26,7 @@ exec_always --no-startup-id mpd &
 exec_always --no-startup-id dunst &
 
 # set wallpaper with fed
-exec_always feh --no-fehbg --bg-scale $HOME/Pictures/wallpapers/background.png
+exec_always feh --auto-rotate --bg-fill --auto-zoom --no-fehbg $HOME/Pictures/wallpapers/cristina-gottardi.jpg
 
 # launch polybar
 exec_always --no-startup-id killall -q
@@ -35,6 +35,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # run battery low warning
 exec_always --no-startup-id battery&
 
+exec --no-startup-id betterlockscreen -w dim
+exec --no-startup-id source ~/.fehbg
+
 # start i3 components
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -42,6 +45,9 @@ exec --no-startup-id nm-applet
 ### Shortcuts ###
 
 floating_modifier $mod
+
+# lockscreen
+bindsym $mod+Shift+Z exec betterlockscreen -l dim
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -52,7 +58,7 @@ bindsym $mod+Shift+q kill
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+# bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -244,9 +250,14 @@ bindsym $mod+r mode "resize"
 default_border pixel 2
 
 #border colors
-client.focused #343746 #343746 #F8F8F2 #343746 #343746
-client.focused_inactive #343746 #343746 #F8F8F2 #21222C #21222C
-client.unfocused #343746 #343746 #F8F8F2 #21222C #21222C
+# focused window colors
+client.focused #CBD0CB #343746 #F8F8F2 #282A36 #343746
+
+# inactive focused window colors
+client.focused_inactive #343746 #343746 #F8F8F2 #282A36 #282A36
+
+# unfocused window colors
+client.unfocused #343746 #343746 #F8F8F2 #282A36 #282A36
 
 ### SETTINGS FOR i3 BAR ###
 
@@ -308,3 +319,7 @@ mode "$mode_gaps_outer" {
 # touchpad on and off controller on laptop with Fn+<touchpad control functional key>
 bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
 bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
+
+# workspace 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
